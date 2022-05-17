@@ -1,4 +1,4 @@
-import { Container, Row } from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
 import Highlighter from "react-highlight-words";    
 import { Image } from 'react-bootstrap'
 import { Col } from 'react-bootstrap'
@@ -40,14 +40,16 @@ export default function Robot(props) {
                         />
                     </span><br></br>
 
-                    <a className='action'>Skip</a>
+                    <a className='action' onClick={(e) => {props.selectRobot(props.id)}}>
+                        {(props.selected) ? "SKIP" : "MARK AS SUITABLE" }
+                    </a>
 
                     <span className='email'>
                         <Highlighter
                             searchWords={[props.highlighted]}
                             highlightClassName="highlighted"
                             textToHighlight={props.email}
-                        />
+                        />)
                     </span>
                 </Col>
             </Row>
