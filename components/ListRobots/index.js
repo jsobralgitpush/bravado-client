@@ -56,12 +56,8 @@ function ListRobots({initialScope}) {
             <br />
             <div className='robot-scrolling'>
             <Scrollbars universal renderTrackHorizontal={props => <div {...props} style={{display: 'none'}} className="track-horizontal"/>}>
-                <div className={(!selectedRobots.length) ? '' : 'selected-robots-section' }>
-                    {selectedRobots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={unSelectRobot} selected={true} />)}
-                </div>
-                <div className={(!robots.length) ? '' : 'unselected-robots-section'} >
-                    {robots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={selectRobot} selected={false} />)}
-                </div>
+                {selectedRobots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={unSelectRobot} selected={true} state={'selected-robots-section'} />)}
+                {robots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={selectRobot} selected={false} state={'unselected-robots-section'} />)}
             </Scrollbars>
             </div>  
         </div>
