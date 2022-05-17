@@ -13,7 +13,7 @@ export default function Home({data}) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch('http://localhost:3000/api/robots')
+  const res = await fetch('https://bravado-api.herokuapp.com/api/robots')
   const data = await res.json()
 
   return {
