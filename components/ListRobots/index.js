@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import InputComponent from '../Input'
 import Robot from './Robot'
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 function ListRobots({initialScope}) {
     const [query, setQuery]  = useState(String)
@@ -8,9 +10,15 @@ function ListRobots({initialScope}) {
     const [selectedRobots, setSelectedRobots] = useState(Array)
 
     function fetchRobots(query) {
-        fetch(`https://bravado-api.herokuapp.com/api/robots?query=${query}`)
+        fetch(`http://localhost:3000/api/robots?query=${query}`)
             .then((res) => res.json())
-            .then((data) => setRobots(data) )
+            .then((data) => {
+                const selectedRobotsIds = selectedRobots.map((value, index) => value.id) || Array.new
+                
+                setRobots(
+                    data.filter((value, index) => !selectedRobotsIds.includes(value.id))
+                )
+            })
     }
 
     function unSelectRobot(id) {
@@ -19,6 +27,7 @@ function ListRobots({initialScope}) {
         )
 
         let indexOfSelectedRobot = selectedRobots.indexOf(robotsHash[`${id}`])
+
         setRobots([...robots, selectedRobots[indexOfSelectedRobot]])
         selectedRobots.splice(indexOfSelectedRobot, 1)
     }
@@ -29,6 +38,7 @@ function ListRobots({initialScope}) {
         )
 
         let indexOfSelectedRobot = robots.indexOf(robotsHash[`${id}`])
+
         setSelectedRobots([...selectedRobots, robots[indexOfSelectedRobot]])
         robots.splice(indexOfSelectedRobot, 1)
     }
@@ -39,16 +49,21 @@ function ListRobots({initialScope}) {
     }
 
     return (
-        <div className='teste'>
-            <div className='search-input-bravado'>
-                <InputComponent keyPress={addQuery} />
+        <div className='robots-section'>
+            <div className='robot-query-input-section'>
+                <InputComponent onChangeEvent={addQuery} />
             </div>
-            <div className='selected-robots'>
-                {selectedRobots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={unSelectRobot} selected={true} />)}
-            </div>
-            <div className='cards-section-bravado'>
-                {robots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={selectRobot} selected={false} />)}
-            </div>
+            <br />
+            <div className='robot-scrolling'>
+            <Scrollbars universal renderTrackHorizontal={props => <div {...props} style={{display: 'none'}} className="track-horizontal"/>}>
+                <div className={(!selectedRobots.length) ? '' : 'selected-robots-section' }>
+                    {selectedRobots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={unSelectRobot} selected={true} />)}
+                </div>
+                <div className={(!robots.length) ? '' : 'unselected-robots-section'} >
+                    {robots.map((robot, i) => <Robot {...robot} key={i} highlighted={query} selectRobot={selectRobot} selected={false} />)}
+                </div>
+            </Scrollbars>
+            </div>  
         </div>
     )
 }
