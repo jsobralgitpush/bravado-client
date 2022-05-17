@@ -10,7 +10,7 @@ function ListRobots({initialScope}) {
     const [selectedRobots, setSelectedRobots] = useState(Array)
 
     function fetchRobots(query) {
-        fetch(`http://localhost:3000/api/robots?query=${query}`)
+        fetch(`https://bravado-api.herokuapp.com/api/robots?query=${query}`)
             .then((res) => res.json())
             .then((data) => {
                 const selectedRobotsIds = selectedRobots.map((value, index) => value.id) || Array.new
