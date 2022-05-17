@@ -1,23 +1,53 @@
-.card-bravado {
-    background: #FAFAFA;
+.robots-section, .selected-robots-section, .unselected-robots-section {
+    margin: 0 auto;
+}
+
+.robots-section {
+    background: $robots-section-color;
+    width: 564px;
+    padding: 10px;
+    height: 643px;
+}
+
+.selected-robots-section {
+    background: $robot-card-color;
+    border: 1px solid #4765FF;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 3px;
+    background-color: $robots-section-color;
+}
+
+.unselected-robots-section {
+    background-color: $robots-section-color;
+}
+
+.highlighted-text { 
+    background-color: $highlighted-color;
+}
+
+.robot-card {
+    background: $robot-card-color;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
     position: relative;
-    margin: 10px;
     border-radius: 3px;
+    margin-bottom: 10px;
 
     img {
         &.robot-avatar {
             background: rgba(0, 0, 0, 0.25);
         }
     }
+
+    a, h3, span {
+        font-family: $font-family;
+        font-style: $font-style;
+    }
     
     a {
-        &.action {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 16px;
+        &.toogle-selection-robot {
+            font-weight: $robot-toogle-selection-link-font-weight;
+            font-size: $robot-toogle-selection-link-font-size;
+            line-height: $robot-toogle-selection-link-line-height;      
             text-align: center;
             color: #009688;
             padding: 5px;
@@ -27,78 +57,41 @@
     }
 
     h3 {
-        &.name {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 32px;
+        &.robot-name {
+            font-weight: $robot-name-font-weight;
+            font-size: $robot-name-font-size;
+            line-height: $robot-name-line-height;
+            color: rgba(0, 0, 0, 0.87);
         }
     }
     span {
 
-        &.title {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 20px;
+        &.robot-title {
+            font-weight: $robot-title-font-weight;
+            font-size: $robot-title-font-size;
+            line-height: $robot-title-line-height;
+            color: rgba(0, 0, 0, 0.543846);
         }
 
-        &.address {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 20px;
+        &.robot-address {
+            font-weight: $robot-address-font-weight;
+            font-size: $robot-address-font-size;
+            line-height: $robot-address-line-height;
+            color: rgba(0, 0, 0, 0.543846);
         }
 
-        &.email {
-            font-family: 'Roboto';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 16px;
+        &.robot-email {
+            font-weight: $robot-email-font-weight;
+            font-size: $robot-email-font-size;
+            line-height: $robot-email-line-height;
             position: absolute;
             top: 0;
             right: 0;
+            color: rgba(0, 0, 0, 0.54);
         }
     }
 }
 
-.cards-section-bravado {
-    width: 564px;
-    height: 643px;
-    margin: 0 auto;
-    background-color: white;
-}
-
-.search-input-bravado {
-    width: 564px;
-    margin: 0 auto;
-}
-
-.search-input {
-    background: #FAFAFA;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
-    border-radius: 2px;
-}
-
-.search-icon {
-    height: 100%;
-    background-color: white !important;
-}
-
-.highlighted {
-    background-color: #f48f42;
-}
-
-.selected-robots {
-    background: #FAFAFA;
-    border: 1px solid #4765FF;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
-    border-radius: 3px;
-    width: 564px;
-    margin: 0 auto;
-    background-color: white;
+.robot-scrolling {
+    height: 90%;
 }
