@@ -8,7 +8,7 @@ emitter.defineVariants('AB for link', ['A', 'B'], [50, 50]);
 
 export default function Robot(props) {
     return (
-        <div className='robot-card'>
+        <div className={(props.selected) ? "robot-card selected" : "robot-card"}>
             <Row>
                 <Col md={4}>
                     <Image
