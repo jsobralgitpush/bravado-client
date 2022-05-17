@@ -1,8 +1,15 @@
-.search-input-bravado {
-    input {
-        width: 100%;
-        background: #FAFAFA;
-        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
-        border-radius: 2px;
-    }
+.robot-query-input-group {
+    height: 48px;
+}
+
+.robot-query-input, .robot-query-input-icon {
+    background: #FAFAFA !important;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+
+}
+
+.robot-query-input-icon {
+    height: 100%;
+    background-color: #FAFAFA !important;
 }
